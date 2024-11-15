@@ -1,0 +1,2 @@
+# Exclure tous les dossiers *.dSYM
+*.dSYM/
