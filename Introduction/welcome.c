@@ -7,13 +7,15 @@ Checks whether the character is 'Q'
 If it is, logs "Welcome to 0DE5!"*/
 
 int main(){
-    printf("Enter the single character");
-    scanf("%1c" , &input);
+    char input;
+    printf("Enter the single character : \n");
+    scanf("%c" , &input);
     if (input == 'Q') {
-        printf("Welcome to 0DE5!");
+        printf("Welcome to 0DE5!\n");
     }
     else {
-        printf("You input must be Q!");
+        printf("You input must be Q!\n");
     }
     return 0;
 }
+
