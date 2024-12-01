@@ -132,13 +132,32 @@ void calculate_binary(int number, char *output) {
     output[8] = '\0'; // Terminer la chaîne binaire
 }
 
+void quaternary(int number , char * output){
+    for (int i=0 ;i < 4 ; i++){
+        output[3-i] = (number % 4) +'0';
+        number /=4;
+    }
+    output[4]='\0';
+  
+}
+
+void to_dna_base(int number , char* output){
+    char dna_base[]={'A' , 'C' , 'G' , 'T' };
+    for (int i= 0; i<4; i++){
+        output[i]=dna_base[number %4];
+        number/=4;
+
+    }
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         printf("Usage: %s <string>\n", argv[0]);
         return 1;
     }
-
+    char res[5];
     char *input = argv[1];
+    char *output=  res;
     int length = strlen(input);
     char binary_output[9]; // Stocker les 8 bits + le caractère de fin '\0'
 
@@ -165,6 +184,19 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < length; i++) {
         calculate_binary((unsigned char)input[i], binary_output);
         printf("%8s ", binary_output);
+    }
+    
+    printf("\nBase4: ");
+    for (int i = 0; i < length; i++) {
+        quaternary(input[i], res);
+        printf("%8s",res);
+        printf(" ");
+    }
+    char  re[5];
+    printf("\nDNA:   ");
+    for (int i=0; i < length ; i++){
+    to_dna_base(input[i] , re);
+    printf("%8s", re);
     }
     printf("\n");
 
